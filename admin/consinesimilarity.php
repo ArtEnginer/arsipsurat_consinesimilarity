@@ -103,11 +103,19 @@ if (isset($_POST['katakunci'])) {
 
     $sql = "";
     if ($jenissurat == "1") {
-        $sql = "SELECT * FROM tb_suratmasuk WHERE tanggalmasuk_suratmasuk BETWEEN '$tglawal' AND '$tglakhir'";
+        if ($tglawal == "" && $tglakhir == "") {
+            $sql = "SELECT * FROM tb_suratmasuk";
+        } else {
+            $sql = "SELECT * FROM tb_suratmasuk WHERE tanggalmasuk_suratmasuk BETWEEN '$tglawal' AND '$tglakhir'";
+        }
         $perihalsurat = "perihal_suratmasuk";
         $file_surat = "file_suratmasuk";
     } else if ($jenissurat == "2") {
-        $sql = "SELECT * FROM tb_suratkeluar WHERE tanggalkeluar_suratkeluar BETWEEN '$tglawal' AND '$tglakhir'";
+        if ($tglawal == "" && $tglakhir == "") {
+            $sql = "SELECT * FROM tb_suratkeluar";
+        } else {
+            $sql = "SELECT * FROM tb_suratkeluar WHERE tanggalkeluar_suratkeluar BETWEEN '$tglawal' AND '$tglakhir'";
+        }
         $perihalsurat = "perihal_suratkeluar";
         $file_surat = "file_suratkeluar";
     }
